@@ -434,6 +434,21 @@
                 </div>
             </div>
         </div>
+        <div class="container" id="carousel-containers">
+            <div class="carousel">
+                <div class="carousel-container" id="carousel">
+                    <img src="./img/Screenshot (11).png" alt="1" />
+                    <img src="./img/Screenshot (12).png" alt="2" />
+                    <img src="./img/Screenshot (13).png" alt="3" />
+                    <img src="./img/Screenshot (14).png" alt="4" />
+                    <img src="./img/Screenshot (15).png" alt="5" />
+                    <img src="./img/Screenshot (16).png" alt="6" />
+                    <img src="./img/Screenshot (17).png" alt="6" />
+                    <img src="./img/Screenshot (19).png" alt="6" />
+                    <img src="./img/Screenshot (20).png" alt="6" />
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Portfolio End -->
 
@@ -534,6 +549,27 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        const carousel = document.getElementById("carousel");
+        const images = carousel.getElementsByTagName("img");
+
+        const count = images.length;
+        const radius = 450;
+
+        for (let i = 0; i < count; i++) {
+            const angle = (360 / count) * i;
+            images[i].style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+        }
+
+        // Optional: Set center image manually at load
+        setInterval(() => {
+            const index = Math.floor((Date.now() / 1000) % count);
+            for (let i = 0; i < count; i++) {
+                images[i].classList.remove("center");
+            }
+            images[index].classList.add("center");
+        }, 1000);
+    </script>
 </body>
 
 </html>
